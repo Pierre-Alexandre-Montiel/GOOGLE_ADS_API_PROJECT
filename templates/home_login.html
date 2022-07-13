@@ -1,3 +1,4 @@
+{% load static %}
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -5,20 +6,34 @@
 form label{color:white}
 form{display:flex;
 	flex-direction: column;}
-h2 {color: white;}
-.nav {
-	color: blue;
-	background-color: purple;
+h2 {color: white;
+	padding-top: 20px;
 }
+.nav {
+	display:flex;
+	color: blue;
+	background-color: #ff00ff;
+	height: 100px;
+	width: 100%;
+	position:relative;
+}
+
+.nav.img {
+	height:100%;
+	width:auto;
+}
+
 body{ color: white;
-	background-color: blue;		
+	background-color: #1294D1;		
 }
 .title {color: blue;}
 </style>
 <div class="title">
-	<nav class="nav">
+    
+	<div class="nav">
+<img src="https://i.pinimg.com/236x/11/c6/44/11c644a1c9d1962535b51fa50ce6a470--sprites-pixel-art.jpg"/>
 	    	<h2>OPTIMUS</h2>
-	</nav>
+	</div>
 </div>
 	<body>
 		<h1>SET UP YOUR CAMPAIGN</h1>
