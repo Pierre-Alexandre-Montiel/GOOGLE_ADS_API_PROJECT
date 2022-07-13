@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<li><a href="/log">Home</a></li>
+  	<li><a href="/logout/">Logout</a></li>
+	{% if user.is_staff%}
+    <li><a href="/staff/">Staff</a></li>
+	{% endif%}
+  	<li><a href="/publishpost/">Publish</a></li>
+  	<li><a href="/forums/">Forums</a></li>
+	<h1>PROFILE PAGE</h1>
+
+<br>
+				<table>
+					<tr>
+					<th>NAME = </th>
+    				<td>{{user.username}}</td> 
+					</tr>
+					<tr>
+					<th>SURNAME = </th>
+    				<td>{{user.first_name}}</td> 
+					</tr>
+					<tr>
+					<th>EMAIL = </th>
+    				<td>{{user.email}}</td> 
+					</tr>
+                    <tr>
+					<th>DESCRIPTION = </th>
+    				<td>{{res}}</td> 
+					</tr>
+                    <tr>
+					<th>IMAGE = </th>
+    				<img src="{{ img.url }}">
+					</tr>
+					<td>
+					</td>
+					</td>
+					</tr>
+				</table>
+                <a href="{% url 'edit' pk=user.id %}">Modify Profile</a>
+</head>
+</html>

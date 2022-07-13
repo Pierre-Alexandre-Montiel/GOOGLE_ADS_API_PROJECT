@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<style>
+form label{color:white}
+form{display:flex;
+	flex-direction: column;}
+h2 {color: white;}
+.nav {
+	color: blue;
+	background-color: purple;
+}
+body{ color: white;
+	background-color: blue;		
+}
+.title {color: blue;}
+</style>
+<div class="title">
+	<nav class="nav">
+	    	<h2>OPTIMUS</h2>
+	</nav>
+</div>
+	<body>
+		<h1>SET UP YOUR CAMPAIGN</h1>
+		<form method="POST">
+			{% csrf_token %}
+        		{{ form}}
+			<button class="btn" type="submit">Create Campaign</button>
+		</form>
+    </body>
+</head>
+</html>

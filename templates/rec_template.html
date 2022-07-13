@@ -1,0 +1,16 @@
+<li>
+<ul>
+{% for i in node.children %}
+	{{i.content}}
+	{{i.id}}
+		<form action="{% url 'comment' pk=i.id %}" method="POST">
+		{% csrf_token %}
+		{{form2.as_p}}
+		<button name="foo" value="upvote">COMMENT</button>
+		</form>
+	{% with node=i template_name="rec_template.html" %}
+        {%include template_name%}
+    {%endwith%}
+{%endfor%}
+</ul>
+</li>

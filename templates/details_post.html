@@ -1,0 +1,89 @@
+{% if request.user.is_authenticated %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<nav>
+		<ol>
+					<li><a href="/log">Home</a></li>
+  		      		<li><a>Logged as {{user}}</a></li>
+  		      		<li><a href="/logout/">Logout</a></li>
+  		      		<li><a href="/forums/">Forums</a></li>
+  		      		<li><a href="/publishpost/">Publish</a></li>
+					<li><a href="{% url 'profile' pk=user.id %}">Your Profile</a></li>
+					{% if user.is_staff%}
+  		      		<li><a href="/staff/">Staff</a></li>
+					{% endif %}
+
+  	  	</ol>
+	</nav>
+	<body>
+		<h1>Details</h1>
+			<br>
+			{% if request.user.is_authenticated %}
+				<br>
+				<table>
+					<tr>
+					<th>ID = </th>
+    				<td>{{post.id}}</td> 
+					</tr>
+					<tr>
+					<th>AUTHOR = </th>
+    				<td>{{post.author}}</td> 
+					</tr>
+					<tr>
+					<th>TITLE = </th>
+    				<td>{{post.title}}</td> 
+					</tr>
+					<tr>
+					<th>CREATED = </th>
+    				<td>{{post.created}}</td> 
+					</tr>
+					<tr>
+					<th>CONTENT = </th>
+    				<td>{{post.content}}</td> 
+					</tr>
+				</table>
+				<tr>
+					<form action="" method="post">
+						{% csrf_token %}
+						{{ form }}
+    					<button name="foo" value="upvote">COMMENT</button>
+					</form>
+					</tr>
+			{%endif%}
+			{%comment%}
+			{% for i in com %}
+			<table>
+					<tr>
+					<th>Author = </th>
+    				<td>{{i.author.username}}</td> 
+					</tr>
+					<tr>
+					<th>Created = </th>
+    				<td>{{i.created}}</td> 
+					</tr>
+					<tr>
+					<th>Comment = </th>
+    				<td>{{i.content}}</td> 
+					</tr>
+			</table>
+			{%endfor%}
+			{%endcomment%}
+			<ul>
+			{%for node in com %} 
+				{% if node.parent_id == None%}				
+				<h3 style="color:Tomato;">{{node.content}}</h3>
+				{{node.id}}
+					<form action="{% url 'comment' pk=node.id %}" method="POST">
+					{% csrf_token %}
+						{{form1.as_p}}
+						<button name="foo" value="upvote">COMMENT</button>
+					</form>
+    			{%include "rec_template.html" %}
+				{% endif %}
+			{%endfor%}
+         	</ul>
+	</body>
+</head>
+</html>
+{% endif %}

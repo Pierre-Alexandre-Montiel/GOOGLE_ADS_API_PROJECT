@@ -1,0 +1,24 @@
+{% if request.user.is_authenticated %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<nav>
+		<ol>
+					<li><a href="/log">Home</a></li>
+  		      		<li><a>Logged as {{user}}</a></li>
+  		      		<li><a href="/logout/">Logout</a></li>
+					<li><a href="{% url 'profile' pk=user.id %}">Your Profile</a></li>
+  	  	</ol>
+	</nav>
+	<body>
+		<h1>EDITE</h1>
+			<br>
+				<form method="POST" enctype="multipart/form-data">
+					{% csrf_token %}
+					{{ form }}
+				<input type="submit" value="Submit">
+				</form>
+	</body>
+</head>
+</html>
+{% endif %}

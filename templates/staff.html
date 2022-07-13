@@ -1,0 +1,40 @@
+{% if request.user.is_authenticated %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<nav>
+		<nav>
+		<ol>
+					<li><a href="/log">Home</a></li>
+  		      		<li><a>Logged as {{id}}</a></li>
+  		      		<li><a href="/logout/">Logout</a></li>
+  		      		<li><a href="/publishpost/">Publish</a></li>
+					<li><a href="{% url 'profile' pk=user.id %}">Your Profile</a></li>
+
+  	  	</ol>
+	</nav>
+	<body>
+		<h1>STAFF</h1>
+			<br>
+				<table>
+				{% for i in f %}   
+					<th>NAME = </th>
+    				<td>{{ i.username}} | </td> 
+					<th>STATUS ADMIN = </th>
+    				<td>{{i.is_staff}} | </td> 
+					<td>
+					<th>STATUS SUPERUSER = </th>
+    				<td>{{i.is_superuser}} | </td> 
+					<td>
+					 <a href="{% url 'admin' pk=i.id %}">Add As Admin </a>
+					<br>
+					 <a href="{% url 'super' pk=i.id %}">Add As SuperUser </a>
+					</td>
+					</tr>
+					</tr>
+				{% endfor %} 
+				</table>
+	</body>
+</head>
+</html>
+{% endif %}

@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<body>
+	<nav>
+		<ol>
+					<li><a href="/">Home</a></li>
+  		      		<li><a href="/Login/">Login</a></li>
+  		      		<li><a href="/register/">Register</a></li>
+  		      		<li><a>Logged as {{user}}</a></li>
+  	  	</ol>
+	</nav>
+	<h1>Registration Page</h1>
+	<form method="POST">
+		{% csrf_token %}
+		{{ form.as_p }}
+		<input type="submit" value="Submit">
+	</form>
+</body>
+</html>

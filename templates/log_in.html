@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<style>
+h2 {color: blue;}
+.nav {
+	color: blue;
+	background-color: purple;
+}
+.title {color: blue;}
+</style>
+	<link rel="stylesheet" href="/templates/styles.css">
+<div class="title">
+	<nav class="nav">
+	    	<h2>OPTIMUS</h2>
+	</nav>
+</div>
+	<body>
+		<h1>SET UP YOUR CAMPAIGN</h1>
+		<form method="POST">
+			{% csrf_token %}
+        		{{ form|linebreaks }}
+			<button class="btn" type="submit">Create Campaign</button>
+		</form>
+    </body>
+</head>
+</html>

@@ -1,0 +1,73 @@
+{% if request.user.is_authenticated %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<nav>
+		<ol>
+					<li><a href="/log">Home</a></li>
+  		      		<li><a>Logged as {{user}}</a></li>
+  		      		<li><a href="/logout/">Logout</a></li>
+  		      		<li><a href="/publishpost/">Publish</a></li>
+					<li><a href="{% url 'profile' pk=user.id %}">Your Profile</a></li>
+					{% if user.is_staff%}
+  		      		<li><a href="/staff/">Staff</a></li>
+					{% endif %}
+
+  	  	</ol>
+	</nav>
+	<body>
+		<h1>POST PAGE</h1>
+			<br>
+				<table>
+			<br>
+				{% for i in post %}   
+					<tr>
+					<th>TITLE = </th>
+    				<td>{{i.title}}</td> 
+					</tr>
+					<tr>
+					<th>AUTHOR = </th>
+    				<td>{{i.author}}</td> 
+					</tr>
+					<tr>
+					<th>CREATED = </th>
+    				<td>{{i.created}}</td> 
+					</tr>
+					<tr>
+					<th>SYNOPSIS = </th>
+    				<td>{{ i.content|truncatechars:20 }}</td> 
+					</tr>
+					<th>PUBLIED SINCE = </th>
+    				<td>{{ i.created|timesince }}</td> 
+					</tr>
+					<td>
+						<a href="{% url 'details' pk=i.id %}">details</a>
+					</td>
+				{% endfor %} 
+				</table>
+	{% if is_paginated %}
+        <div class="pagination">
+            <span class="page-links">
+                {% if page_obj.has_previous %}
+                    <a href="/cars?page={{ page_obj.previous_page_number }}">previous</a>
+                {% endif %}
+                <span class="page-current">
+                    Page {{ page_obj.number }} of {{ page_obj.paginator.num_pages }}.
+                </span>
+                {% if page_obj.has_next %}
+                    <a href="/cars?page={{ page_obj.next_page_number }}">next</a>
+                {% endif %}
+            </span>
+        </div>
+    {% endif %}
+	{{venues}}
+	{% if venues.has_previous %}
+		<a href="?page={{venues.previous_page_number}}">prev</a>
+	{% endif %}
+	{% if venues.has_next %}
+		<a href="?page={{venues.next_page_number}}">next</a>
+	{% endif %}
+	</body>
+</head>
+</html>
+{% endif %}
