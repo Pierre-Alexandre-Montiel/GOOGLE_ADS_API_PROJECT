@@ -1,6 +1,6 @@
 👨‍💻 # GOOGLE_ADS_API_PROJECT ! 👨‍💻
 
-Ce programme a pour objectif d'automatiser la création de campagne marketing sur Google Ads.
+Ce programme à pour objectif d'automatiser la création de campagnes marketing sur Google Ads.
 
 Le script python est directement branché à l'api Google Ads.
 
